@@ -48,9 +48,11 @@ const Profile = () => {
         console.log("Fetching profile for user ID:", userData.id);
 
         const [profileRes, savedItemsRes] = await Promise.all([
-          axios.get(`REACT_APP_BACKEND_URL/api/user/profile/${userData.id}`),
           axios.get(
-            `REACT_APP_BACKEND_URL/api/user/getSavedItem/${userData.id}`
+            `http://nextstep-production-6f92.up.railway.app/api/user/profile/${userData.id}`
+          ),
+          axios.get(
+            `http://nextstep-production-6f92.up.railway.app/api/user/getSavedItem/${userData.id}`
           ),
         ]);
 
@@ -77,12 +79,14 @@ const Profile = () => {
         city: Data.user?.City?._id || "",
       });
 
-      const statesRes = await axios.get("REACT_APP_BACKEND_URL/api/state/all");
+      const statesRes = await axios.get(
+        "http://nextstep-production-6f92.up.railway.app/api/state/all"
+      );
       setStates(statesRes.data);
 
       if (Data.user?.State?._id) {
         const citiesRes = await axios.get(
-          `REACT_APP_BACKEND_URL/api/cities/${Data.user.State._id}`
+          `http://nextstep-production-6f92.up.railway.app/api/cities/${Data.user.State._id}`
         );
         setCities(citiesRes.data);
       }
@@ -102,7 +106,7 @@ const Profile = () => {
 
     try {
       const citiesRes = await axios.get(
-        `REACT_APP_BACKEND_URL/api/cities/${selectedStateId}`
+        `http://nextstep-production-6f92.up.railway.app/api/cities/${selectedStateId}`
       );
       setCities(citiesRes.data);
     } catch (error) {
@@ -120,7 +124,7 @@ const Profile = () => {
       };
 
       const res = await axios.put(
-        `REACT_APP_BACKEND_URL/api/user/useredit/${userData.id}`,
+        `http://nextstep-production-6f92.up.railway.app/api/user/useredit/${userData.id}`,
         updatedData
       );
 
@@ -394,7 +398,7 @@ function SavedItemsSection({ userId }) {
     const fetchUserWishlist = async () => {
       try {
         const SavedItemsResponse = await axios.get(
-          `REACT_APP_BACKEND_URL/api/user/getSavedItem/${userId}`
+          `http://nextstep-production-6f92.up.railway.app/api/user/getSavedItem/${userId}`
         );
         console.log("User profile data:", SavedItemsResponse.data);
         setSavedItems(SavedItemsResponse.data);
