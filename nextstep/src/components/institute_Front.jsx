@@ -3,7 +3,7 @@ import { ChevronDown, ChevronRight, Grid, List, Search } from "lucide-react";
 import Navbar from "./Navbar";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { UserContext } from "../Context/UserContext";
+import { UserContext } from "../Context/userContext";
 
 const Institues = () => {
   const userData = useContext(UserContext);
