@@ -67,7 +67,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: function (value) {
-        return /^(?=.[0-9])(?=.[!@#$%^&])[A-Za-z\d!@#$%^&]{6,}$/.test(value);
+      return /^(?=.*[0-9])(?=.*[!@#$%^&])[A-Za-z\d!@#$%^&]{6,}$/.test(value);
       },
       message:
         "Password must be at least 6 characters long and include at least one number and one special character.",
