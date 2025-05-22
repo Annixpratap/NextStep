@@ -15,7 +15,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "REACT_APP_BACKEND_URL/api/user/forgotPassword",
+        "http://nextstep-production-6f92.up.railway.app/api/user/forgotPassword",
         { email }
       );
       setMessage(response.data.message);
@@ -31,7 +31,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "REACT_APP_BACKEND_URL/api/user/resetPasswordWithOTP",
+        "http://nextstep-production-6f92.up.railway.app/api/user/resetPasswordWithOTP",
         { email, otp, newPassword }
       );
       setMessage(response.data.message);
