@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_APP_API_URL || "REACT_APP_BACKEND_URL/api";
-
 const Signup = () => {
   const navigate = useNavigate();
 
@@ -27,7 +25,9 @@ const Signup = () => {
   useEffect(() => {
     const fetchStates = async () => {
       try {
-        const response = await axios.get(`${API_URL}/state/all`);
+        const response = await axios.get(
+          `http://nextstep-production-6f92.up.railway.app/api/state/all`
+        );
         setStates(response.data);
       } catch (error) {
         console.error("Error fetching states:", error);
@@ -42,7 +42,7 @@ const Signup = () => {
       const fetchCities = async () => {
         try {
           const response = await axios.get(
-            `${API_URL}/cities/${formData.state}`
+            `http://nextstep-production-6f92.up.railway.app/api/cities/${formData.state}`
           );
           setCities(response.data);
         } catch (error) {
@@ -94,11 +94,15 @@ const Signup = () => {
 
       console.log("Sending Data:", requestData);
 
-      await axios.post(`${API_URL}/user/register`, requestData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await axios.post(
+        `https://nextstep-production-6f92.up.railway.app/api/user/register`,
+        requestData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       alert("Signup successful!");
       navigate("/login"); // Redirect to login page
