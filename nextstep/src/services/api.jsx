@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api"; // Backend URL
+const API_URL = import.meta.env.VITE_APP_API_URL || "REACT_APP_BACKEND_URL/api"; // Backend URL
 
 const fetchData = async (url) => {
   try {

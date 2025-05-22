@@ -37,9 +37,9 @@ const Institues = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/courses");
+        const response = await axios.get("REACT_APP_BACKEND_URL/api/courses");
         const institutesResponse = await axios.get(
-          "http://localhost:5000/api/institutes"
+          "REACT_APP_BACKEND_URL/api/institutes"
         );
         console.log("institutes", institutesResponse.data);
         setcourses(response.data);
@@ -199,7 +199,7 @@ const Institues = () => {
   const handleSaving = async (Id, str) => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/user/saveItems`,
+        `REACT_APP_BACKEND_URL/api/user/saveItems`,
         {
           userId: userData.userData.id,
           itemId: Id,

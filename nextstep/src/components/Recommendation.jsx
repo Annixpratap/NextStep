@@ -29,7 +29,7 @@ function RecommendationsSection({ userId }) {
     const fetchRecommendations = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/user/getRecommendations/${userId}`
+          `hREACT_APP_BACKEND_URL/api/user/getRecommendations/${userId}`
         );
         setRecommendedJobs(res.data);
       } catch (error) {

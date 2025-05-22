@@ -23,7 +23,7 @@ export const UserProvider = ({ children }) => {
   }, [token, userData, isLoggedIn]);
 
   const logIn = async (email, password) => {
-    const res = await axios.post("http://localhost:5000/api/user/login", {
+    const res = await axios.post("REACT_APP_BACKEND_URL/api/user/login", {
       email,
       password,
     });
@@ -47,7 +47,7 @@ export const UserProvider = ({ children }) => {
       const fetchUpdatedLocation = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:5000/api/user/profile/${userData.id}`
+            `REACT_APP_BACKEND_URL/api/user/profile/${userData.id}`
           );
           console.log("Updated Location data:", response.data);
 

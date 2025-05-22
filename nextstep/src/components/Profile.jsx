@@ -48,9 +48,9 @@ const Profile = () => {
         console.log("Fetching profile for user ID:", userData.id);
 
         const [profileRes, savedItemsRes] = await Promise.all([
-          axios.get(`http://localhost:5000/api/user/profile/${userData.id}`),
+          axios.get(`REACT_APP_BACKEND_URL/api/user/profile/${userData.id}`),
           axios.get(
-            `http://localhost:5000/api/user/getSavedItem/${userData.id}`
+            `REACT_APP_BACKEND_URL/api/user/getSavedItem/${userData.id}`
           ),
         ]);
 
@@ -77,12 +77,12 @@ const Profile = () => {
         city: Data.user?.City?._id || "",
       });
 
-      const statesRes = await axios.get("http://localhost:5000/api/state/all");
+      const statesRes = await axios.get("REACT_APP_BACKEND_URL/api/state/all");
       setStates(statesRes.data);
 
       if (Data.user?.State?._id) {
         const citiesRes = await axios.get(
-          `http://localhost:5000/api/cities/${Data.user.State._id}`
+          `REACT_APP_BACKEND_URL/api/cities/${Data.user.State._id}`
         );
         setCities(citiesRes.data);
       }
@@ -102,7 +102,7 @@ const Profile = () => {
 
     try {
       const citiesRes = await axios.get(
-        `http://localhost:5000/api/cities/${selectedStateId}`
+        `REACT_APP_BACKEND_URL/api/cities/${selectedStateId}`
       );
       setCities(citiesRes.data);
     } catch (error) {
@@ -120,7 +120,7 @@ const Profile = () => {
       };
 
       const res = await axios.put(
-        `http://localhost:5000/api/user/useredit/${userData.id}`,
+        `REACT_APP_BACKEND_URL/api/user/useredit/${userData.id}`,
         updatedData
       );
 
@@ -394,7 +394,7 @@ function SavedItemsSection({ userId }) {
     const fetchUserWishlist = async () => {
       try {
         const SavedItemsResponse = await axios.get(
-          `http://localhost:5000/api/user/getSavedItem/${userId}`
+          `REACT_APP_BACKEND_URL/api/user/getSavedItem/${userId}`
         );
         console.log("User profile data:", SavedItemsResponse.data);
         setSavedItems(SavedItemsResponse.data);

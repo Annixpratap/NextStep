@@ -37,7 +37,7 @@ const JobListings = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/jobs");
+        const response = await axios.get("REACT_APP_BACKEND_URL/api/jobs");
         setJobs(response.data);
       } catch (err) {
         console.log(Error);
@@ -111,7 +111,7 @@ const JobListings = () => {
   const handleSaving = async (Id, str) => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/user/saveItems`,
+        `REACT_APP_BACKEND_URL/api/user/saveItems`,
         {
           userId: userData.userData.id,
           itemId: Id,

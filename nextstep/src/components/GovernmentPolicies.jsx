@@ -38,7 +38,7 @@ const GovernmentPolicies = () => {
   useEffect(() => {
     const fetchPolicies = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/policies`, {
+        const response = await axios.get(`REACT_APP_BACKEND_URL/api/policies`, {
           params: { location },
         });
         setPolicies(response.data);
@@ -139,7 +139,7 @@ const GovernmentPolicies = () => {
   const handleSaving = async (policyId) => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/user/saveItems`,
+        `REACT_APP_BACKEND_URL/api/user/saveItems`,
         {
           userId: userData.id,
           itemId: policyId,

@@ -15,7 +15,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/user/forgotPassword",
+        "REACT_APP_BACKEND_URL/api/user/forgotPassword",
         { email }
       );
       setMessage(response.data.message);
@@ -31,7 +31,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/user/resetPasswordWithOTP",
+        "REACT_APP_BACKEND_URL/api/user/resetPasswordWithOTP",
         { email, otp, newPassword }
       );
       setMessage(response.data.message);
