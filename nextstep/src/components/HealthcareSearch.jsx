@@ -31,7 +31,7 @@ const HealthcareSearch = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "REACT_APP_BACKEND_URL/api/hospitals",
+          "http://nextstep-production-6f92.up.railway.app/api/hospitals",
           {
             params: { location },
           }
