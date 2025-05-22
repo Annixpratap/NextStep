@@ -29,7 +29,7 @@ function RecommendationsSection({ userId }) {
     const fetchRecommendations = async () => {
       try {
         const res = await axios.get(
-          `hREACT_APP_BACKEND_URL/api/user/getRecommendations/${userId}`
+          `http://nextstep-production-6f92.up.railway.app/api/user/getRecommendations/${userId}`
         );
         setRecommendedJobs(res.data);
       } catch (error) {
