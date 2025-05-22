@@ -37,9 +37,11 @@ const Institues = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("REACT_APP_BACKEND_URL/api/courses");
+        const response = await axios.get(
+          "http://nextstep-production-6f92.up.railway.app/api/courses"
+        );
         const institutesResponse = await axios.get(
-          "REACT_APP_BACKEND_URL/api/institutes"
+          "http://nextstep-production-6f92.up.railway.app/api/institutes"
         );
         console.log("institutes", institutesResponse.data);
         setcourses(response.data);
@@ -199,7 +201,7 @@ const Institues = () => {
   const handleSaving = async (Id, str) => {
     try {
       const response = await axios.post(
-        `REACT_APP_BACKEND_URL/api/user/saveItems`,
+        `http://nextstep-production-6f92.up.railway.app/api/user/saveItems`,
         {
           userId: userData.userData.id,
           itemId: Id,
