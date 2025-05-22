@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import background from "../assets/background.png";
 import Navbar from "./Navbar";
-import { UserContext } from "../Context/UserContext";
+import { UserContext } from "../Context/userContext";
 import DemoPage from "./Page2"; //Page 2
 import Demo from "./Page4"; //page 4
 import Pagemap from "./Page3"; //page3

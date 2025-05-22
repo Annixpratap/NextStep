@@ -10,7 +10,7 @@ import {
 import "leaflet/dist/leaflet.css";
 import Navbar from "./Navbar";
 import axios from "axios";
-import { UserContext } from "../Context/UserContext";
+import { UserContext } from "../Context/userContext";
 const MapUpdater = ({ facilities }) => {
   const map = useMap();
   if (facilities.length > 0) {
