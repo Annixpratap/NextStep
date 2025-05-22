@@ -23,10 +23,13 @@ export const UserProvider = ({ children }) => {
   }, [token, userData, isLoggedIn]);
 
   const logIn = async (email, password) => {
-    const res = await axios.post("REACT_APP_BACKEND_URL/api/user/login", {
-      email,
-      password,
-    });
+    const res = await axios.post(
+      "https://nextstep-production-6f92.up.railway.app/api/user/login",
+      {
+        email,
+        password,
+      }
+    );
 
     console.log("Login response", res.data);
 
@@ -47,7 +50,7 @@ export const UserProvider = ({ children }) => {
       const fetchUpdatedLocation = async () => {
         try {
           const response = await axios.get(
-            `REACT_APP_BACKEND_URL/api/user/profile/${userData.id}`
+            `http://nextstep-production-6f92.up.railway.app/api/user/profile/${userData.id}`
           );
           console.log("Updated Location data:", response.data);
 
