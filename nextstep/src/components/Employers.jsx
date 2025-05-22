@@ -14,8 +14,6 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import { motion } from "framer-motion";
 
-
-
 const Employers = () => {
   const [viewMode, setViewMode] = useState("list");
   const [employers, setEmployers] = useState([]);
@@ -33,7 +31,9 @@ const Employers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("REACT_APP_BACKEND_URL/api/employers");
+        const response = await axios.get(
+          "http://nextstep-production-6f92.up.railway.app/api/employers"
+        );
         setEmployers(response.data);
       } catch (err) {
         console.log(Error);
@@ -100,7 +100,7 @@ const Employers = () => {
       transition={{ duration: 0.5 }}
     >
       <Navbar />
-  
+
       <div className="flex w-full mx-auto">
         {/* Sidebar Filter */}
         <motion.div
@@ -120,7 +120,7 @@ const Employers = () => {
               </button>
             )}
           </div>
-  
+
           {/* Location Filter */}
           <div className="border-t border-amber-900 py-4">
             <div
@@ -165,7 +165,7 @@ const Employers = () => {
               </motion.div>
             )}
           </div>
-  
+
           {/* Salary Filter */}
           <div className="border-t border-amber-900 py-4">
             <div
@@ -211,7 +211,7 @@ const Employers = () => {
             )}
           </div>
         </motion.div>
-  
+
         {/* Main Content Area */}
         <motion.div
           className="w-3/4 p-6 bg-[#f6f6ef]"
@@ -237,17 +237,18 @@ const Employers = () => {
               </div>
             </div>
           </div>
-  
+
           {/* Grid View with animations */}
           <div className="grid grid-cols-2 gap-6">
             {filteredEmployers.map((employer, index) => (
               <motion.div
-              key={employer._id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              whileHover={{ scale: 1.02 }}
-              className="bg-[#fff8f2] rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.12)] transition-all duration-300 p-6 space-y-4"            >
+                key={employer._id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                whileHover={{ scale: 1.02 }}
+                className="bg-[#fff8f2] rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.12)] transition-all duration-300 p-6 space-y-4"
+              >
                 <h3 className="text-lg font-bold mb-1">{employer.Name}</h3>
                 <p className="text-sm mb-2 flex items-center">
                   <MapPin className="h-4 w-4 mr-2 text-amber-700" />
@@ -269,7 +270,7 @@ const Employers = () => {
               </motion.div>
             ))}
           </div>
-  
+
           {/* No results found */}
           {filteredEmployers.length === 0 && (
             <motion.div
@@ -291,8 +292,6 @@ const Employers = () => {
       </div>
     </motion.div>
   );
-  
-  
 };
 
 export default Employers;
