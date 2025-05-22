@@ -38,9 +38,12 @@ const GovernmentPolicies = () => {
   useEffect(() => {
     const fetchPolicies = async () => {
       try {
-        const response = await axios.get(`REACT_APP_BACKEND_URL/api/policies`, {
-          params: { location },
-        });
+        const response = await axios.get(
+          `http://nextstep-production-6f92.up.railway.app/api/policies`,
+          {
+            params: { location },
+          }
+        );
         setPolicies(response.data);
       } catch (err) {
         console.log("Error fetching policies:", err);
@@ -139,7 +142,7 @@ const GovernmentPolicies = () => {
   const handleSaving = async (policyId) => {
     try {
       const response = await axios.post(
-        `REACT_APP_BACKEND_URL/api/user/saveItems`,
+        `http://nextstep-production-6f92.up.railway.app/api/user/saveItems`,
         {
           userId: userData.id,
           itemId: policyId,
@@ -442,3 +445,4 @@ const GovernmentPolicies = () => {
 };
 
 export default GovernmentPolicies;
+
