@@ -20,14 +20,15 @@ import { motion } from "framer-motion";
 // Components
 import Navbar from "./Navbar";
 import RecommendationsSection from "./Recommendation";
-
+import {femaleAvatar} from "../assets/avatars/female.png";
+import {maleAvatar} from "../assets/avatars/male.png";
 // Context
 import { UserContext } from "../Context/userContext.jsx";
 
 const Profile = () => {
   const { userData } = useContext(UserContext); // Get logged-in user's ID from context
-  const maleAvatar = "../src/assets/avatars/male.png";
-  const femaleAvatar = "../src/assets/avatars/female.png";
+  // const maleAvatar = "../src/assets/avatars/male.png";
+  // const femaleAvatar = "../src/assets/avatars/female.png";
 
   const [Data, setData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
