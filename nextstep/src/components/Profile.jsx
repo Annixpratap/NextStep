@@ -20,8 +20,8 @@ import { motion } from "framer-motion";
 // Components
 import Navbar from "./Navbar";
 import RecommendationsSection from "./Recommendation";
-import {femaleAvatar} from "../assets/avatars/female.png";
-import {maleAvatar} from "../assets/avatars/male.png";
+import { femaleAvatar } from "../assets/avatars/female.png";
+import { maleAvatar } from "../assets/avatars/male.png";
 // Context
 import { UserContext } from "../Context/userContext.jsx";
 
@@ -174,8 +174,8 @@ const Profile = () => {
               <img
                 src={
                   Data.user?.Gender?.toLowerCase() === "female"
-                    ? femaleAvatar
-                    : maleAvatar
+                    ? { femaleAvatar }
+                    : { maleAvatar }
                 }
                 alt="Profile Avatar"
                 className="w-28 h-28 rounded-full border-4 border-[#decdbd] shadow-md transition-all duration-300 hover:scale-105 hover:ring hover:ring-[#cdb6a2] bg-white"
