@@ -56,7 +56,6 @@ const JobListings = () => {
   const companies = [...new Set(jobs.map((job) => job.Company_Name))]; // Get unique companies
 
   // Filter functions
-
   const filteredJobs = jobs
     .filter((job) => {
       // Filter by industry
@@ -270,7 +269,6 @@ const JobListings = () => {
           </div>
 
           {/* Sort by Salary */}
-
           <div className="border-t border-amber-900 py-4">
             <div className="flex justify-between items-center mb-2">
               <h3 className="font-bold text-amber-900">Sort by Salary</h3>

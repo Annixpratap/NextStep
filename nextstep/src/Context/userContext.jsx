@@ -41,13 +41,15 @@ export const UserProvider = ({ children }) => {
     setLoggedIn(false);
     sessionStorage.clear();
   };
+  const API_URL = import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api"; // Backend URL
+
 
   useEffect(() => {
     if (userData?.id) {
       const fetchUpdatedLocation = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:5000/api/user/profile/${userData.id}`
+            `${API_URL}/user/profile/${userData.id}`
           );
           console.log("Updated Location data:", response.data);
 

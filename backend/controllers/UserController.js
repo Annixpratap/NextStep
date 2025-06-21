@@ -52,7 +52,6 @@ exports.registerUser = async (req, res) => {
       State,
       Gender,
       Date_of_Birth,
-
       password: hashedPassword,
     });
 
