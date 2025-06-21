@@ -40,6 +40,7 @@ const JobListings = () => {
     const fetchJobs = async () => {
       try {
         const response = await axios.get(`${API_URL}/jobs`);
+
         setJobs(response.data);
       } catch (err) {
         console.log(Error);
@@ -55,6 +56,7 @@ const JobListings = () => {
   const companies = [...new Set(jobs.map((job) => job.Company_Name))]; // Get unique companies
 
   // Filter functions
+
   const filteredJobs = jobs
     .filter((job) => {
       // Filter by industry
@@ -119,6 +121,7 @@ const JobListings = () => {
         itemId: Id,
         itemType: "Job",
       });
+
       console.log("job saved successfully:", response.data);
     } catch (error) {
       console.log("Error saving policy:", error);
@@ -267,6 +270,7 @@ const JobListings = () => {
           </div>
 
           {/* Sort by Salary */}
+
           <div className="border-t border-amber-900 py-4">
             <div className="flex justify-between items-center mb-2">
               <h3 className="font-bold text-amber-900">Sort by Salary</h3>

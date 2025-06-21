@@ -33,6 +33,7 @@ exports.registerUser = async (req, res) => {
           "Password must be at least 6 characters long and include at least one number and one special character.",
       });
     }
+
     console.log("Receiving Data:", req.body);
 
     const existingUser = await User.findOne({ email });
@@ -51,6 +52,7 @@ exports.registerUser = async (req, res) => {
       State,
       Gender,
       Date_of_Birth,
+
       password: hashedPassword,
     });
 

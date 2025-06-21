@@ -35,6 +35,7 @@ const GovernmentPolicies = () => {
 
   const API_URL =
     import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api";
+
   const location = userData.State || "";
 
   useEffect(() => {
@@ -142,6 +143,7 @@ const GovernmentPolicies = () => {
     try {
       const response = await axios.post(
         `${API_URL}/user/saveItems`,
+
         {
           userId: userData.id,
           itemId: policyId,

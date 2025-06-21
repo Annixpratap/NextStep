@@ -34,6 +34,7 @@ const Employers = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API_URL}/employers`);
+
         setEmployers(response.data);
       } catch (err) {
         console.log(Error);
@@ -120,7 +121,6 @@ const Employers = () => {
               </button>
             )}
           </div>
-
           {/* Location Filter */}
           <div className="border-t border-amber-900 py-4">
             <div
@@ -211,7 +211,6 @@ const Employers = () => {
             )}
           </div>
         </motion.div>
-
         {/* Main Content Area */}
         <motion.div
           className="w-3/4 p-6 bg-[#f6f6ef]"

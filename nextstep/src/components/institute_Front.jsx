@@ -34,6 +34,7 @@ const Institues = () => {
 
   const API_URL =
     import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api";
+
   // Course data
 
   useEffect(() => {
@@ -41,6 +42,7 @@ const Institues = () => {
       try {
         const response = await axios.get(`${API_URL}/courses`);
         const institutesResponse = await axios.get(`${API_URL}/institutes`);
+
         console.log("institutes", institutesResponse.data);
         setcourses(response.data);
         setinstitutes(institutesResponse.data);
@@ -203,6 +205,7 @@ const Institues = () => {
         itemId: Id,
         itemType: str == "Courses" ? "Course" : "Institute",
       });
+
       console.log("course/institute saved successfully:", response.data);
     } catch (error) {
       console.log("Error saving policy:", error);

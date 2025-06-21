@@ -35,6 +35,7 @@ const HealthcareSearch = () => {
         const response = await axios.get(`${API_URL}/hospitals`, {
           params: { location },
         });
+
         setHospitalData(response.data);
       } catch (err) {
         console.log("Error fetching data:", err);

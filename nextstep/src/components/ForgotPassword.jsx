@@ -19,6 +19,7 @@ const ForgotPassword = () => {
       const response = await axios.post(`${API_URL}/user/forgotPassword`, {
         email,
       });
+
       setMessage(response.data.message);
       setStep(2); // Move to step 2
       setError("");
@@ -33,6 +34,7 @@ const ForgotPassword = () => {
     try {
       const response = await axios.post(
         `${API_URL}/user/resetPasswordWithOTP`,
+
         { email, otp, newPassword }
       );
       setMessage(response.data.message);

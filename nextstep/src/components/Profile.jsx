@@ -39,6 +39,7 @@ const Profile = () => {
 
   const API_URL =
     import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api";
+
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
 
@@ -78,6 +79,7 @@ const Profile = () => {
       });
 
       const statesRes = await axios.get(`${API_URL}/state/all`);
+
       setStates(statesRes.data);
 
       if (Data.user?.State?._id) {
@@ -102,6 +104,7 @@ const Profile = () => {
 
     try {
       const citiesRes = await axios.get(`${API_URL}/cities/${selectedStateId}`);
+
       setCities(citiesRes.data);
     } catch (error) {
       console.error("Error fetching cities:", error);
@@ -119,6 +122,7 @@ const Profile = () => {
 
       const res = await axios.put(
         `${API_URL}/user/useredit/${userData.id}`,
+
         updatedData
       );
 
@@ -390,6 +394,7 @@ function SavedItemsSection({ userId }) {
 
   const API_URL =
     import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api";
+
   useEffect(() => {
     const fetchUserWishlist = async () => {
       try {
