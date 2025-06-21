@@ -33,12 +33,14 @@ const GovernmentPolicies = () => {
     Years: true,
   });
 
+  const API_URL =
+    import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api";
   const location = userData.State || "";
 
   useEffect(() => {
     const fetchPolicies = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/policies`, {
+        const response = await axios.get(`${API_URL}/policies`, {
           params: { location },
         });
         setPolicies(response.data);
@@ -139,7 +141,7 @@ const GovernmentPolicies = () => {
   const handleSaving = async (policyId) => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/user/saveItems`,
+        `${API_URL}/user/saveItems`,
         {
           userId: userData.id,
           itemId: policyId,

@@ -37,6 +37,8 @@ const Profile = () => {
     city: "",
   });
 
+  const API_URL =
+    import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api";
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
 
@@ -48,10 +50,8 @@ const Profile = () => {
         console.log("Fetching profile for user ID:", userData.id);
 
         const [profileRes, savedItemsRes] = await Promise.all([
-          axios.get(`http://localhost:5000/api/user/profile/${userData.id}`),
-          axios.get(
-            `http://localhost:5000/api/user/getSavedItem/${userData.id}`
-          ),
+          axios.get(`${API_URL}/user/profile/${userData.id}`),
+          axios.get(`${API_URL}/user/getSavedItem/${userData.id}`),
         ]);
 
         console.log("User profile data:", savedItemsRes.data);
@@ -77,12 +77,12 @@ const Profile = () => {
         city: Data.user?.City?._id || "",
       });
 
-      const statesRes = await axios.get("http://localhost:5000/api/state/all");
+      const statesRes = await axios.get(`${API_URL}/state/all`);
       setStates(statesRes.data);
 
       if (Data.user?.State?._id) {
         const citiesRes = await axios.get(
-          `http://localhost:5000/api/cities/${Data.user.State._id}`
+          `${API_URL}/cities/${Data.user.State._id}`
         );
         setCities(citiesRes.data);
       }
@@ -101,9 +101,7 @@ const Profile = () => {
     setFormData((prev) => ({ ...prev, state: selectedStateId }));
 
     try {
-      const citiesRes = await axios.get(
-        `http://localhost:5000/api/cities/${selectedStateId}`
-      );
+      const citiesRes = await axios.get(`${API_URL}/cities/${selectedStateId}`);
       setCities(citiesRes.data);
     } catch (error) {
       console.error("Error fetching cities:", error);
@@ -120,7 +118,7 @@ const Profile = () => {
       };
 
       const res = await axios.put(
-        `http://localhost:5000/api/user/useredit/${userData.id}`,
+        `${API_URL}/user/useredit/${userData.id}`,
         updatedData
       );
 
@@ -390,11 +388,13 @@ function SavedItemsSection({ userId }) {
     courses: [],
   });
 
+  const API_URL =
+    import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api";
   useEffect(() => {
     const fetchUserWishlist = async () => {
       try {
         const SavedItemsResponse = await axios.get(
-          `http://localhost:5000/api/user/getSavedItem/${userId}`
+          `${API_URL}/user/getSavedItem/${userId}`
         );
         console.log("User profile data:", SavedItemsResponse.data);
         setSavedItems(SavedItemsResponse.data);

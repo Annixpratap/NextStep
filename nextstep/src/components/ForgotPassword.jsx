@@ -11,13 +11,14 @@ const ForgotPassword = () => {
   const [step, setStep] = useState(1); // Step 1: Enter email, Step 2: Enter OTP and new password
   const navigate = useNavigate();
 
+  const API_URL =
+    import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api";
   const handleForgotPassword = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/user/forgotPassword",
-        { email }
-      );
+      const response = await axios.post(`${API_URL}/user/forgotPassword`, {
+        email,
+      });
       setMessage(response.data.message);
       setStep(2); // Move to step 2
       setError("");
@@ -31,7 +32,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/user/resetPasswordWithOTP",
+        `${API_URL}/user/resetPasswordWithOTP`,
         { email, otp, newPassword }
       );
       setMessage(response.data.message);

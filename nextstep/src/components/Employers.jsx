@@ -28,12 +28,12 @@ const Employers = () => {
     salaryRange: true,
   });
 
+  const API_URL =
+    import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api";
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://nextstep-production-6f92.up.railway.app/api/employers"
-        );
+        const response = await axios.get(`${API_URL}/employers`);
         setEmployers(response.data);
       } catch (err) {
         console.log(Error);

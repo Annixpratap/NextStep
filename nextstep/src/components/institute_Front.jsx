@@ -32,15 +32,15 @@ const Institues = () => {
     locations: true,
   });
 
+  const API_URL =
+    import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api";
   // Course data
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/courses");
-        const institutesResponse = await axios.get(
-          "http://localhost:5000/api/institutes"
-        );
+        const response = await axios.get(`${API_URL}/courses`);
+        const institutesResponse = await axios.get(`${API_URL}/institutes`);
         console.log("institutes", institutesResponse.data);
         setcourses(response.data);
         setinstitutes(institutesResponse.data);
@@ -198,14 +198,11 @@ const Institues = () => {
 
   const handleSaving = async (Id, str) => {
     try {
-      const response = await axios.post(
-        `http://localhost:5000/api/user/saveItems`,
-        {
-          userId: userData.userData.id,
-          itemId: Id,
-          itemType: str == "Courses" ? "Course" : "Institute",
-        }
-      );
+      const response = await axios.post(`${API_URL}/user/saveItems`, {
+        userId: userData.userData.id,
+        itemId: Id,
+        itemType: str == "Courses" ? "Course" : "Institute",
+      });
       console.log("course/institute saved successfully:", response.data);
     } catch (error) {
       console.log("Error saving policy:", error);

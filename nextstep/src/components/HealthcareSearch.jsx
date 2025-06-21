@@ -27,15 +27,14 @@ const HealthcareSearch = () => {
 
   const location = userData.City || "";
 
+  const API_URL =
+    import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api";
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/api/hospitals",
-          {
-            params: { location },
-          }
-        );
+        const response = await axios.get(`${API_URL}/hospitals`, {
+          params: { location },
+        });
         setHospitalData(response.data);
       } catch (err) {
         console.log("Error fetching data:", err);
