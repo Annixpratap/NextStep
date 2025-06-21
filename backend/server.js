@@ -22,7 +22,7 @@ app.use(express.json());
 // Middleware
 app.use(
   cors({
-    origin: "http://next-step-theta.vercel.app", // exact frontend origin
+    origin: "https://next-step-frontend.vercel.app/", // exact frontend origin
     credentials: true,
   })
 );
