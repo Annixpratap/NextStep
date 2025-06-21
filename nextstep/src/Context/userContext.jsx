@@ -4,6 +4,8 @@ import axios from "axios";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+  const API_URL = import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api"; // Backend URL
+
   const [token, setToken] = useState(
     () => sessionStorage.getItem("token") || ""
   );
@@ -23,7 +25,7 @@ export const UserProvider = ({ children }) => {
   }, [token, userData, isLoggedIn]);
 
   const logIn = async (email, password) => {
-    const res = await axios.post("http://localhost:5000/api/user/login", {
+    const res = await axios.post(`${API_URL}/user/login`, {
       email,
       password,
     });
@@ -41,8 +43,7 @@ export const UserProvider = ({ children }) => {
     setLoggedIn(false);
     sessionStorage.clear();
   };
-  const API_URL = import.meta.env.VITE_APP_API_URL || "http://localhost:5000/api"; // Backend URL
-
+ 
 
   useEffect(() => {
     if (userData?.id) {

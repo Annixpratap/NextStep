@@ -22,7 +22,7 @@ import Navbar from "./Navbar";
 import RecommendationsSection from "./Recommendation";
 
 // Context
-import { UserContext } from "../Context/UserContext";
+import { UserContext } from "../Context/userContext.jsx";
 
 const Profile = () => {
   const { userData } = useContext(UserContext); // Get logged-in user's ID from context

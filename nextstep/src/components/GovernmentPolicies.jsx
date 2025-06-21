@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { UserContext } from "../Context/UserContext";
+import { UserContext } from "../Context/userContext";
 import {
   ChevronDown,
   ChevronRight,

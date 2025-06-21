@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import Navbar from "./Navbar";
 import axios from "axios";
-import { UserContext } from "../Context/UserContext";
+import { UserContext } from "../Context/userContext";
 import { motion } from "framer-motion";
 
 const JobListings = () => {
