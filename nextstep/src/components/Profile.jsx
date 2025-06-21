@@ -20,8 +20,8 @@ import { motion } from "framer-motion";
 // Components
 import Navbar from "./Navbar";
 import RecommendationsSection from "./Recommendation";
-import { femaleAvatar } from "../assets/avatars/female.png";
-import { maleAvatar } from "../assets/avatars/male.png";
+import femaleAvatar from "../assets/avatars/female.png";
+import maleAvatar from "../assets/avatars/male.png";
 // Context
 import { UserContext } from "../Context/userContext.jsx";
 
