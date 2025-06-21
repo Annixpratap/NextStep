@@ -22,23 +22,20 @@ exports.registerUser = async (req, res) => {
       password,
     } = req.body;
 
-    if (
-      typeof password !== "string" ||
-      password.length < 6 ||
-      !/\d/.test(password) ||
-      !/[!@#$%^&]/.test(password)
-    ) {
-      return res.status(400).json({
-        message:
-          "Password must be at least 6 characters long and include at least one number and one special character.",
-      });
-    }
-
+    
     console.log("Receiving Data:", req.body);
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: "Email is already registered." });
+    }
+
+    const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&])[A-Za-z\d!@#$%^&]{6,}$/;
+    if (!passwordRegex.test(password)) {
+      return res.status(400).json({
+        error:
+          "Password must be at least 6 characters long and include at least one number and one special character.",
+      });
     }
 
     const saltRounds = 10;
