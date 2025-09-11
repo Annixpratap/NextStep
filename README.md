@@ -1,6 +1,8 @@
 # NextStep
-## Project Overview
 
+![NextStep Preview](Screenshot%202025-03-17%20233512.png)
+
+## Project Overview
 **Next Step** is a comprehensive platform designed to assist individuals relocating to a new city in India. It provides a one-stop solution for discovering:
 
 - Nearby healthcare facilities (hospitals, clinics, pharmacies)
