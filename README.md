@@ -177,9 +177,3 @@ This project is open-source and available under the MIT License.
 
 **Next Step** — Making relocation easier, one city at a time.
 
-AAruhsi: add this prompt to my readme file
-
-GitHub Copilot: ````markdown
-...existing content...
-
----
