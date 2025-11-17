@@ -22,19 +22,15 @@ exports.registerUser = async (req, res) => {
       password,
     } = req.body;
 
-    if (
-      typeof password !== "string" ||
-      password.length < 6 ||
-      !/\d/.test(password) ||
-      !/[!@#$%^&]/.test(password)
-    ) {
+    // Enhanced password validation
+    const passwordRegex =
+      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/;
+    if (!passwordRegex.test(password)) {
       return res.status(400).json({
         message:
           "Password must be at least 6 characters long and include at least one number and one special character.",
       });
     }
-
-    console.log("Receiving Data:", req.body);
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -57,17 +53,20 @@ exports.registerUser = async (req, res) => {
 
     await newUser.save();
 
-    const token = jwt.sign(
-      {
-        id: newUser._id,
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
+    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
+    // Store token in HttpOnly cookie (secure, not accessible via JS)
+    res.cookie("authToken", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // HTTPS only in production
+      sameSite: "strict",
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
 
     res.status(201).json({
       message: "User registered successfully!",
-      token,
       userData: {
         id: newUser._id,
       },
@@ -84,7 +83,7 @@ exports.registerUser = async (req, res) => {
       const duplicateField = Object.keys(error.keyPattern)[0];
       return res
         .status(400)
-        .json({ error: ` ${duplicateField} already exists ` });
+        .json({ error: `${duplicateField} already exists` });
     }
 
     res.status(500).json({ error: "Internal server error" });

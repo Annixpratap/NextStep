@@ -1,23 +1,22 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/HomePage";
-
-import State from "./components/State_Front";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
+import HomePage from "./pages/HomePage";
+import State from "./pages/State_Front";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import HealthcareSearch from "./components/HealthcareSearch";
-import Institutes from "./components/institute_Front";
-import GovernmentPolicies from "./components/GovernmentPolicies";
-import JobListings from "./components/Migration_Front";
-import ProfilePage from "./components/Profile";
-import Employers from "./components/Employers";
+import Institutes from "./pages/institute_Front";
+import GovernmentPolicies from "./pages/GovernmentPolicies";
+import JobListings from "./pages/Migration_Front";
+import ProfilePage from "./pages/Profile";
+import Employers from "./pages/Employers";
 import ForgotPassword from "./components/ForgotPassword";
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/governmentPolicies" element={<GovernmentPolicies />} />

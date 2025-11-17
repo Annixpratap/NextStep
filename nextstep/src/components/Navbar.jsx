@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserCircle } from "lucide-react";
 import { UserContext } from "../Context/userContext";
+
 const Navbar = () => {
   const navigate = useNavigate();
   const { isLoggedIn, logout } = useContext(UserContext);

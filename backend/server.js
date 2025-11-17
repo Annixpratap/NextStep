@@ -13,6 +13,7 @@ const courseRoutes = require("./routes/courseRoutes");
 const employerRoutes = require("./routes/employerRoutes");
 const hospitalRoutes = require("./routes/hospitalRoutes");
 const jobRoutes = require("./routes/JobRoutes");
+
 dotenv.config();
 connectDB();
 
@@ -22,7 +23,7 @@ app.use(express.json());
 // Middleware
 app.use(
   cors({
-    origin: "https://next-step-frontend.vercel.app/", // exact frontend origin
+    origin: "http://localhost:5173" || "https://next-step-frontend.vercel.app/", // exact frontend origin
     credentials: true,
   })
 );

@@ -18,17 +18,15 @@ import {
 import { motion } from "framer-motion";
 
 // Components
-import Navbar from "./Navbar";
-import RecommendationsSection from "./Recommendation";
+import Navbar from "../components/Navbar.jsx";
+import RecommendationsSection from "../components/Recommendation.jsx";
 import femaleAvatar from "../assets/avatars/female.png";
 import maleAvatar from "../assets/avatars/male.png";
 // Context
 import { UserContext } from "../Context/userContext.jsx";
 
 const Profile = () => {
-  const { userData } = useContext(UserContext); // Get logged-in user's ID from context
-  // const maleAvatar = "../src/assets/avatars/male.png";
-  // const femaleAvatar = "../src/assets/avatars/female.png";
+  const { userData } = useContext(UserContext);
 
   const [Data, setData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
@@ -310,36 +308,6 @@ const Profile = () => {
                 }
                 icon={isEditing ? null : <ChevronDown size={18} />}
               />
-
-              {/* INTEREST Field */}
-              {/* <ProfileField
-                label="INTEREST"
-                value={
-                  isEditing ? (
-                    <select
-                      name="interest"
-                      value={formData.interest}
-                      onChange={(e) =>
-                        setFormData((prev) => ({
-                          ...prev,
-                          interest: e.target.value,
-                        }))
-                      }
-                      className="bg-transparent outline-none text-[#5c4433] w-full"
-                    >
-                      <option value="">Select Interest</option>
-                      <option value="Technology">Technology</option>
-                      <option value="Healthcare">Healthcare</option>
-                      <option value="Education">Education</option>
-                      <option value="Business">Business</option>
-                      <option value="Government Services">Government Services</option>
-                    </select>
-                  ) : (
-                    <span className="block truncate">{Data.user?.Interest || "-"}</span>
-                  )
-                }
-                icon={isEditing ? null : <ChevronDown size={18} />}
-              /> */}
             </div>
 
             {/* Button */}
@@ -369,6 +337,7 @@ const Profile = () => {
     </div>
   );
 };
+export default Profile;
 
 function ProfileField({ label, value, icon }) {
   return (
@@ -381,8 +350,6 @@ function ProfileField({ label, value, icon }) {
     </div>
   );
 }
-
-export default Profile;
 
 function SavedItemsSection({ userId }) {
   // Mock data for saved items

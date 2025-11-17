@@ -11,7 +11,7 @@ import {
   MapPin,
   Building,
 } from "lucide-react";
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
 import axios from "axios";
 import { motion } from "framer-motion";
 

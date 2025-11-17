@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import background from "../assets/background.png";
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
 import { UserContext } from "../Context/userContext";
-import DemoPage from "./Page2"; //Page 2
-import Demo from "./Page4"; //page 4
-import Pagemap from "./Page3"; //page3
-import Footer from "./Footer";
+import Page2 from "../components/Page2";
+import Page3 from "../components/Page3";
+import Page4 from "../components/Page4";
+import Page5 from "../components/Page5";
+import Footer from "../components/Footer";
 
-function Home() {
+export default function HomePage() {
   const { isLoggedIn } = useContext(UserContext);
   return (
     <div className="overflow-hidden w-full">
@@ -36,12 +37,11 @@ function Home() {
         </div>
       </div>
 
-      <DemoPage />
-      <Pagemap />
-      <Demo />
+      <Page2 />
+      <Page3 />
+      <Page4 />
+      <Page5 />
       <Footer />
     </div>
   );
 }
-
-export default Home;
