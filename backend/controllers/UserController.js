@@ -22,21 +22,6 @@ exports.registerUser = async (req, res) => {
       password,
     } = req.body;
 
-<<<<<<< HEAD
-    // Enhanced password validation
-    const passwordRegex =
-      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/;
-    if (!passwordRegex.test(password)) {
-      return res.status(400).json({
-        message:
-          "Password must be at least 6 characters long and include at least one number and one special character.",
-      });
-    }
-=======
-    
-    console.log("Receiving Data:", req.body);
->>>>>>> 6994b828c00697756cd0ff60cc1f46823c5cb461
-
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: "Email is already registered." });
