@@ -23,7 +23,7 @@ app.use(express.json());
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:5173" || "https://next-step-frontend.vercel.app/", // exact frontend origin
+    origin: "https://next-step-frontend.vercel.app/", // exact frontend origin
     credentials: true,
   })
 );
